@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ká Ká Boom — Música que vira festa</title>
+  <meta name="description" content="A banda infantil que reimagina cantigas, inventa funks e transforma o silêncio em festa. Quatro pequenos heróis, três álbuns, muita magia." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&family=Sniglet:wght@400;800&family=Bagel+Fat+One&family=Chango&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="notouch">
+
+  <!-- ============ HEADER ============ -->
+  <header id="site-header">
+    <a href="#hero" class="brand" aria-label="Ká Ká Boom — Home">
+      <img src="assets/logo-fluff.png" alt="Ká Ká Boom" />
+    </a>
+    <nav aria-label="Principal">
+      <a href="#band" data-i18n="nav.band">A Banda</a>
+      <a href="#characters" data-i18n="nav.chars">Quem Somos</a>
+      <a href="#albums" data-i18n="nav.albums">Álbuns</a>
+      <a href="#listen" data-i18n="nav.listen">Onde Ouvir</a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Idioma">
+      <button data-lang="pt" class="active">PT</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" data-screen-label="01 Hero">
+    <div class="hero-aurora" aria-hidden="true"></div>
+    <div class="hero-stars" aria-hidden="true"></div>
+    <div class="hero-rays" aria-hidden="true"></div>
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <div class="noise"></div>
+
+    <div class="hero-content">
+      <!-- The scene — full-bleed, untouched aspect, 3D parallax -->
+      <div class="hero-scene" id="hero-scene">
+        <div class="hero-scene-inner">
+          <img class="hero-scene-img" src="assets/hero-blocks.png" alt="Logo Ká Ká Boom em letras de pelúcia colorida sobre cenário de blocos de madeira e massa de modelar." />
+
+          <!-- Floating sparkle decorations — SVG layered above scene -->
+          <svg class="hero-sparkle" style="top:6%; left:-3%; color:#ffd66b" width="56" height="56" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0L13.5 9.5 23 11 13.5 12.5 12 22 10.5 12.5 1 11 10.5 9.5z"/>
+          </svg>
+          <svg class="hero-sparkle" style="top:14%; right:2%; color:#ff7ec8; animation-delay:.6s" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0L13.5 9.5 23 11 13.5 12.5 12 22 10.5 12.5 1 11 10.5 9.5z"/>
+          </svg>
+          <svg class="hero-sparkle" style="bottom:8%; left:6%; color:#9b6bff; animation-delay:1.2s" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0L13.5 9.5 23 11 13.5 12.5 12 22 10.5 12.5 1 11 10.5 9.5z"/>
+          </svg>
+          <svg class="hero-sparkle" style="top:30%; right:-3%; color:#7ec8ff; animation-delay:.3s" width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0L13.5 9.5 23 11 13.5 12.5 12 22 10.5 12.5 1 11 10.5 9.5z"/>
+          </svg>
+          <svg class="hero-sparkle" style="bottom:20%; right:8%; color:#9be07f; animation-delay:.9s" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0L13.5 9.5 23 11 13.5 12.5 12 22 10.5 12.5 1 11 10.5 9.5z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <h1 class="hero-title">
+          <span class="line" data-i18n="hero.title.1">A banda que faz</span>
+          <span class="line accent" data-i18n="hero.title.2">o silêncio virar festa.</span>
+        </h1>
+        <div class="hero-cta-wrap">
+          <button id="hero-cta" class="k-btn k-btn-wood">
+            <span class="play-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span data-i18n="hero.cta">Ouvir Agora</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint" data-i18n="hero.scroll">Role para descobrir</div>
+  </section>
+
+  <!-- separator -->
+  <div class="sep" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="sep1" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#080d2c"/>
+          <stop offset="100%" stop-color="#fff9ed"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,40 C240,90 480,0 720,40 C960,80 1200,10 1440,50 L1440,100 L0,100 Z" fill="#fff9ed"/>
+      <path d="M0,40 C240,90 480,0 720,40 C960,80 1200,10 1440,50" fill="none" stroke="rgba(155,107,255,0.3)" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <!-- ============ BAND ============ -->
+  <section id="band" class="section" data-screen-label="02 Band">
+    <div class="noise subtle"></div>
+    <div class="container">
+      <div class="band-grid">
+        <div class="band-image" data-reveal="left">
+          <div class="tape" aria-hidden="true"></div>
+          <img src="assets/bedroom.png" alt="As quatro crianças da banda Ká Ká Boom cantando e dançando no quarto." />
+        </div>
+        <div class="band-copy">
+          <div class="sound-waves" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="eyebrow" data-i18n="band.eyebrow" data-reveal="up">Conheça a Ká Ká Boom</div>
+          <h2 class="section-title" data-i18n="band.title" data-reveal="up">Onde a mágica sonora acontece.</h2>
+          <p class="section-sub" data-i18n="band.body" data-reveal="up">No quarto, na sala, no banho, na escola — a banda transforma o cotidiano das crianças em pista de dança. De cantigas centenárias reimaginadas a hits inéditos como "Splash Splash na Banheira" e "Funk do Golfinho", cada faixa é um convite a se mexer, rir e aprender junto.</p>
+          <div class="band-stats" data-reveal-stagger>
+            <div class="band-stat"><div class="v">3</div><div class="k" data-i18n="band.stat1.k">Álbuns lançados</div></div>
+            <div class="band-stat"><div class="v">42</div><div class="k" data-i18n="band.stat2.k">Faixas originais</div></div>
+            <div class="band-stat"><div class="v">4</div><div class="k" data-i18n="band.stat3.k">Pequenos heróis</div></div>
+            <div class="band-stat"><div class="v" data-i18n="band.stat4.v">Sempre</div><div class="k" data-i18n="band.stat4.k">Diversão garantida</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHARACTERS ============ -->
+  <section id="characters" class="section" data-layout="grid" data-screen-label="03 Characters">
+    <div class="container">
+      <div class="chars-head">
+        <div>
+          <div class="eyebrow" data-i18n="chars.eyebrow" data-reveal="up">Os quatro pequenos heróis</div>
+          <h2 class="section-title" data-i18n="chars.title" data-reveal="up">Uma turma. Quatro universos.</h2>
+        </div>
+        <p class="section-sub" data-i18n="chars.sub" data-reveal="up">Cada criança da banda tem seu jeito, sua textura, seu som — e juntas formam o coral mais colorido do quarto.</p>
+      </div>
+
+      <div class="chars-stage">
+        <div class="char-slide active">
+          <div class="char-info">
+            <div class="char-num">01</div>
+            <h3 class="char-tag" data-i18n="chars.c1.tag">A Curiosa</h3>
+            <p class="char-desc" data-i18n="chars.c1.desc">Cabelos de fogo, sardas de constelação. Pergunta tudo, canta mais alto.</p>
+          </div>
+          <div class="char-image k-tilt">
+            <span class="badge">#01 • Vocal</span>
+            <img src="assets/char-redhead.jpeg" alt="A Curiosa: menina ruiva de cabelos ondulados laranjas, em um estúdio de gravação." />
+          </div>
+        </div>
+
+        <div class="char-slide">
+          <div class="char-info">
+            <div class="char-num">02</div>
+            <h3 class="char-tag" data-i18n="chars.c2.tag">O Sonhador</h3>
+            <p class="char-desc" data-i18n="chars.c2.desc">Cachinhos de algodão, bochechas rosadas. O coração macio da banda.</p>
+          </div>
+          <div class="char-image k-tilt">
+            <span class="badge">#02 • Backing</span>
+            <img src="assets/char-blonde.jpeg" alt="O Sonhador: menino loiro de cachinhos de algodão segurando um violão de feltro." />
+          </div>
+        </div>
+
+        <div class="char-slide">
+          <div class="char-info">
+            <div class="char-num">03</div>
+            <h3 class="char-tag" data-i18n="chars.c3.tag">O Inventor</h3>
+            <p class="char-desc" data-i18n="chars.c3.desc">Óculos arco-íris. Constrói foguetes com caixa de sapato e ritmos com palmas.</p>
+          </div>
+          <div class="char-image k-tilt">
+            <span class="badge">#03 • Beats</span>
+            <img src="assets/char-glasses.jpeg" alt="O Inventor: menino de óculos arco-íris coloridos em um estúdio com vinis e instrumentos." />
+          </div>
+        </div>
+
+        <div class="char-slide">
+          <div class="char-info">
+            <div class="char-num">04</div>
+            <h3 class="char-tag" data-i18n="chars.c4.tag">A Estrela</h3>
+            <p class="char-desc" data-i18n="chars.c4.desc">Cabelo roxo, moletom de bichinho. Sobe no palco antes do palco existir.</p>
+          </div>
+          <div class="char-image k-tilt">
+            <span class="badge">#04 • Performance</span>
+            <img src="assets/char-purple.jpeg" alt="A Estrela: menina de cabelos roxos cantando no microfone em um estúdio." />
+          </div>
+        </div>
+      </div>
+
+      <div class="chars-controls">
+        <button class="char-nav prev" aria-label="Personagem anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="char-dots" role="tablist">
+          <button class="char-dot active" aria-label="Personagem 1"></button>
+          <button class="char-dot" aria-label="Personagem 2"></button>
+          <button class="char-dot" aria-label="Personagem 3"></button>
+          <button class="char-dot" aria-label="Personagem 4"></button>
+        </div>
+        <button class="char-nav next" aria-label="Próximo personagem">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PEEK PORTAL ============ -->
+  <section class="peek-portal" data-screen-label="04 Peek Portal">
+    <img class="peek-img" src="assets/peek-wide.png" alt="" aria-hidden="true" />
+    <div class="peek-text">
+      <h2><em data-i18n="peek.title">Espia só, vem aí.</em></h2>
+    </div>
+  </section>
+
+  <!-- ============ ALBUMS / CASTLE ============ -->
+  <section id="albums" class="section spotlight" data-screen-label="05 Albums">
+    <div class="container">
+      <div class="eyebrow" data-i18n="albums.eyebrow" data-reveal="up">O Portal dos Lançamentos</div>
+      <h2 class="section-title" data-i18n="albums.title" data-reveal="up">Três mundos sonoros para descobrir.</h2>
+      <p class="section-sub" data-i18n="albums.sub" data-reveal="up">Três discos que viraram universos. Toque para abrir cada um.</p>
+
+      <div class="albums-feature" data-reveal="zoom">
+        <img class="albums-feature-img" src="assets/castle-night.png" alt="As crianças da banda diante de um castelo encantado em uma noite estrelada de feltro." />
+        <div class="fireflies" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="albums-feature-text">
+          <div>
+            <div class="ft-tag" data-i18n="albums.featured">Em destaque</div>
+            <h3 data-i18n="featured.title">O Castelo Encantado da Noite</h3>
+            <p data-i18n="featured.body">Faixa-conceito do álbum Pequenos Grandes Temas. Uma canção para acalmar o coração antes do sonho começar.</p>
+          </div>
+          <a href="https://open.spotify.com/intl-pt/artist/3luK9Sr31ls7Ngb54FnREx?si=dQnt1Q_6S7WnNEHnwQhnIg" target="_blank" rel="noopener" class="k-btn k-btn-wood" style="padding: 14px 26px; font-size: 16px;">
+            <span class="play-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span data-i18n="albums.listen">Tocar no Spotify</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="album-grid" data-reveal-stagger>
+        <!-- Cantigas Reimaginadas -->
+        <article class="album-card" data-album="cantigas">
+          <div class="album-cover">
+            <img src="assets/cover-cantigas.png" alt="Capa do álbum Cantigas Reimaginadas." />
+          </div>
+          <div class="album-body">
+            <h4>Cantigas Reimaginadas</h4>
+            <div class="album-info">
+              <span>2026</span><span class="sep-dot">•</span><span>9 <span data-i18n="albums.tracks">faixas</span></span>
+            </div>
+            <div class="album-tracks">
+              <div class="track"><span class="num">01</span>Ciranda, Cirandinha</div>
+              <div class="track"><span class="num">02</span>A Barata Diz Que Tem</div>
+              <div class="track"><span class="num">03</span>Escravos de Jó</div>
+              <div class="track"><span class="num">04</span>Se Essa Rua Fosse Minha</div>
+              <div class="track"><span class="num">05</span>Hoje é Domingo</div>
+              <div class="track"><span class="num">06</span>Pirulito que Bate Bate</div>
+              <div class="track"><span class="num">07</span>Borboletinha</div>
+              <div class="track"><span class="num">08</span>Ciranda, Cirandinha — Versão Alternativa</div>
+              <div class="track"><span class="num">09</span>Hoje é Domingo — Versão Misteriosa</div>
+            </div>
+            <button class="album-toggle">
+              <span data-i18n="albums.see">Ver faixas</span><span class="chev">▾</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Funk para Crianças -->
+        <article class="album-card" data-album="funk">
+          <div class="album-cover">
+            <img src="assets/cover-funk.jpg" alt="Capa do álbum Funk para Crianças." />
+          </div>
+          <div class="album-body">
+            <h4>Funk para Crianças</h4>
+            <div class="album-info">
+              <span>2026</span><span class="sep-dot">•</span><span>8 <span data-i18n="albums.tracks">faixas</span></span>
+            </div>
+            <div class="album-tracks">
+              <div class="track"><span class="num">01</span>Funk da Vaquinha</div>
+              <div class="track"><span class="num">02</span>Funk do Golfinho</div>
+              <div class="track"><span class="num">03</span>Funk do Tomatinho Vermelhinho</div>
+              <div class="track"><span class="num">04</span>Funk do Gatinho Bagunceiro</div>
+              <div class="track"><span class="num">05</span>Funk da Gelatina Tremelique</div>
+              <div class="track"><span class="num">06</span>Funk do Feijão</div>
+              <div class="track"><span class="num">07</span>Funk da Pipoquinha Puladeira</div>
+              <div class="track"><span class="num">08</span>Funk do Cavalinho</div>
+            </div>
+            <button class="album-toggle">
+              <span data-i18n="albums.see">Ver faixas</span><span class="chev">▾</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Pequenos Grandes Temas -->
+        <article class="album-card" data-album="pequenos">
+          <div class="album-cover">
+            <img src="assets/cover-pequenos.png" alt="Capa do álbum Pequenos Grandes Temas." />
+          </div>
+          <div class="album-body">
+            <h4>Pequenos Grandes Temas</h4>
+            <div class="album-info">
+              <span>2026</span><span class="sep-dot">•</span><span>25 <span data-i18n="albums.tracks">faixas</span></span><span class="sep-dot">•</span><span>2 discos</span>
+            </div>
+            <div class="album-tracks">
+              <div class="disc-label">Disco 1</div>
+              <div class="track"><span class="num">01</span>O Sol Chegou</div>
+              <div class="track"><span class="num">02</span>Vem Cantar</div>
+              <div class="track"><span class="num">03</span>A Festa do Som</div>
+              <div class="track"><span class="num">04</span>Ondas de Alegria na Segunda-Feira</div>
+              <div class="track"><span class="num">05</span>Aventura na Escola</div>
+              <div class="track"><span class="num">06</span>Hino da Turma</div>
+              <div class="track"><span class="num">07</span>Aprender e Sorrir</div>
+              <div class="track"><span class="num">08</span>Festa na Mesa</div>
+              <div class="track"><span class="num">09</span>Super Poder Gengival</div>
+              <div class="track"><span class="num">10</span>Desliga a Tela, Liga a Vida</div>
+              <div class="track"><span class="num">11</span>Vem se Mexer</div>
+              <div class="track"><span class="num">12</span>Janela Mágica para o Mundo</div>
+              <div class="disc-label">Disco 2</div>
+              <div class="track"><span class="num">13</span>Gente Nova</div>
+              <div class="track"><span class="num">14</span>Super Crianças</div>
+              <div class="track"><span class="num">15</span>A Arca dos Bichos Felizes</div>
+              <div class="track"><span class="num">16</span>Arco Íris em Mim</div>
+              <div class="track"><span class="num">17</span>A Semente</div>
+              <div class="track"><span class="num">18</span>Pequenos Gestos</div>
+              <div class="track"><span class="num">19</span>A Dor Vai Passar</div>
+              <div class="track"><span class="num">20</span>Super Poder da Limpeza</div>
+              <div class="track"><span class="num">21</span>Splash Splash na Banheira</div>
+              <div class="track"><span class="num">22</span>Asas Pra Sonhar</div>
+              <div class="track"><span class="num">23</span>Estrela do Meu Coração</div>
+              <div class="track"><span class="num">24</span>Castelo de Sonhos</div>
+              <div class="track"><span class="num">25</span>O Castelo Encantado da Noite</div>
+            </div>
+            <button class="album-toggle">
+              <span data-i18n="albums.see">Ver faixas</span><span class="chev">▾</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- separator -->
+  <div class="sep" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,60 Q360,0 720,60 T1440,60 L1440,0 L0,0 Z" fill="#080d2c"/>
+      <path d="M0,60 Q360,120 720,60 T1440,60 L1440,120 L0,120 Z" fill="#fff9ed"/>
+    </svg>
+  </div>
+
+  <!-- ============ LISTEN ============ -->
+  <section id="listen" class="section" data-screen-label="06 Listen">
+    <div class="container">
+      <div class="eyebrow" data-i18n="listen.eyebrow">Playgrounds Sonoros</div>
+      <h2 class="section-title" data-i18n="listen.title">Aperte o play onde você estiver.</h2>
+      <p class="section-sub" data-i18n="listen.sub">O som da Ká Ká Boom mora nas suas plataformas favoritas.</p>
+
+      <div class="listen-mat">
+        <div class="listen-card spotify">
+          <h3>Spotify</h3>
+          <p data-i18n="listen.spotify.body">Salve nas suas playlists, compartilhe com a família, escute em qualquer lugar.</p>
+          <a class="listen-btn" href="https://open.spotify.com/intl-pt/artist/3luK9Sr31ls7Ngb54FnREx?si=dQnt1Q_6S7WnNEHnwQhnIg" target="_blank" rel="noopener">
+            <span class="platform-ico">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12C24 5.4 18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            </span>
+            <span data-i18n="listen.spotify">Ouvir no Spotify</span>
+          </a>
+          <svg class="plat-ico-big" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12C24 5.4 18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        </div>
+
+        <div class="listen-card ytm">
+          <h3>YouTube Music</h3>
+          <p data-i18n="listen.ytm.body">Coloca no autoplay e deixa a banda escolher a próxima — playlist infinita garantida.</p>
+          <a class="listen-btn" href="https://music.youtube.com/channel/UCTyb93DZpFKevlv_ENMCsZQ" target="_blank" rel="noopener">
+            <span class="platform-ico">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000"><circle cx="12" cy="12" r="11" fill="#FF0000"/><polygon points="10,8 16,12 10,16" fill="#fff"/></svg>
+            </span>
+            <span data-i18n="listen.ytm">Ouvir no YouTube Music</span>
+          </a>
+          <svg class="plat-ico-big" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><polygon points="10,8 16,12 10,16" fill="#e84a4a"/></svg>
+        </div>
+      </div>
+
+      <div class="spotify-embed-wrap">
+        <iframe style="border-radius:24px" src="https://open.spotify.com/embed/artist/3luK9Sr31ls7Ngb54FnREx?utm_source=generator&theme=0" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <!-- mountain separator -->
+  <div class="sep" aria-hidden="true">
+    <svg viewBox="0 0 1440 180" preserveAspectRatio="none" style="background:#fff9ed;">
+      <defs>
+        <linearGradient id="footerG" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#fff9ed"/>
+          <stop offset="100%" stop-color="#080d2c"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,180 L0,120 L180,40 L320,110 L520,30 L720,90 L900,20 L1100,80 L1280,40 L1440,90 L1440,180 Z" fill="#080d2c"/>
+      <path d="M0,180 L0,140 L180,80 L320,130 L520,70 L720,110 L900,60 L1100,100 L1280,70 L1440,110 L1440,180 Z" fill="#0c1235" opacity="0.7"/>
+      <circle cx="220" cy="55" r="3" fill="#fff7c2"/>
+      <circle cx="540" cy="40" r="2" fill="#fff"/>
+      <circle cx="900" cy="35" r="2.5" fill="#ff7ec8"/>
+      <circle cx="1280" cy="60" r="2" fill="#9b6bff"/>
+    </svg>
+  </div>
+
+  <footer id="footer" data-screen-label="07 Footer">
+    <div class="footer-bg" aria-hidden="true">
+      <img src="assets/hero-blocks.png" alt="" />
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-dots" aria-hidden="true" style="--s:14px"><span style="width:18px;height:18px"></span><span style="width:18px;height:18px"></span><span style="width:18px;height:18px"></span><span style="width:18px;height:18px"></span></span>
+        <h4>Ká Ká Boom</h4>
+        <p data-i18n="footer.tag">Música segura, divertida e do tamanho do mundo das crianças.</p>
+        <div class="safe-badge">
+          <span class="check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span data-i18n="footer.safe">Conteúdo 100% seguro para crianças</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer.listen">Ouça</h5>
+        <ul>
+          <li><a href="https://open.spotify.com/intl-pt/artist/3luK9Sr31ls7Ngb54FnREx?si=dQnt1Q_6S7WnNEHnwQhnIg" target="_blank" rel="noopener">Spotify ↗</a></li>
+          <li><a href="https://music.youtube.com/channel/UCTyb93DZpFKevlv_ENMCsZQ" target="_blank" rel="noopener">YouTube Music ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer.browse">Navegar</h5>
+        <ul>
+          <li><a href="#band" data-i18n="nav.band">A Banda</a></li>
+          <li><a href="#characters" data-i18n="nav.chars.footer">Personagens</a></li>
+          <li><a href="#albums" data-i18n="nav.albums">Álbuns</a></li>
+          <li><a href="#listen" data-i18n="nav.listen">Onde Ouvir</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-rights">
+      <span data-i18n="footer.rights">© 2026 Ká Ká Boom. Todos os direitos reservados.</span>
+      <span class="dots">
+        <span style="background:#7e3ce0"></span>
+        <span style="background:#f04b9a"></span>
+        <span style="background:#2cc6c2"></span>
+        <span style="background:#8ec23a"></span>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ============ TWEAKS PANEL ============ -->
+  <div id="tweaks-panel">
+    <div class="twk-head">
+      <h6>Tweaks</h6>
+      <button class="tweaks-close" aria-label="Fechar">✕</button>
+    </div>
+    <div class="tweak-group">
+      <label class="tweak-label" data-i18n="tweaks.layout">Layout dos personagens</label>
+      <div class="tweak-opts">
+        <button class="tweak-opt" data-tweak="charsLayout" data-value="carousel" data-i18n="tweaks.layout.carousel">Carrossel</button>
+        <button class="tweak-opt" data-tweak="charsLayout" data-value="grid" data-i18n="tweaks.layout.grid">Grade</button>
+        <button class="tweak-opt" data-tweak="charsLayout" data-value="stack" data-i18n="tweaks.layout.stack">Empilhado</button>
+      </div>
+    </div>
+    <div class="tweak-group">
+      <label class="tweak-label" data-i18n="tweaks.font.display">Fonte de títulos</label>
+      <div class="tweak-opts">
+        <button class="tweak-opt" data-tweak="displayFont" data-value="Fredoka">Fredoka</button>
+        <button class="tweak-opt" data-tweak="displayFont" data-value="Sniglet">Sniglet</button>
+        <button class="tweak-opt" data-tweak="displayFont" data-value="Bagel Fat One">Bagel</button>
+        <button class="tweak-opt" data-tweak="displayFont" data-value="Chango">Chango</button>
+      </div>
+    </div>
+    <div class="tweak-group">
+      <label class="tweak-label" data-i18n="tweaks.font.body">Fonte de corpo</label>
+      <div class="tweak-opts">
+        <button class="tweak-opt" data-tweak="bodyFont" data-value="Nunito">Nunito</button>
+        <button class="tweak-opt" data-tweak="bodyFont" data-value="Quicksand">Quicksand</button>
+        <button class="tweak-opt" data-tweak="bodyFont" data-value="DM Sans">DM Sans</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="particles.js"></script>
+  <script src="cursor.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
